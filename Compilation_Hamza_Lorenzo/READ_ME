@@ -1,0 +1,21 @@
+Groupe:
+	El Khadir Hamza
+	Simeoni Lorenzo
+
+//Compilation
+	Makefile fourni
+
+//Utilisation
+	
+	Execution du programe
+		./texcc <nom_dufichier.tex>
+	
+	Execution du script mips	
+		spim -f output.s 
+
+//Fonctionalitées 
+	-Gestion des declarations d'entiers, flotants 
+	-Gestion de sortie de texte de chaines de caractere 
+	-Gestion de sortie d'entiers et de flotants
+	-Gestion des oppérations arithmétique sur les entiers + sur les flotants
+	-Gestion des erreurs

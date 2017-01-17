@@ -1,0 +1,13 @@
+A:={}
+A
+a:={1,22}
+b:=aUNION{3}
+b
+a
+C:={1,3,5}
+A:=BinterC
+a
+D:=C
+E:=COMP{1,2}
+d
+E

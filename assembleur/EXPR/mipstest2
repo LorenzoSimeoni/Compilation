@@ -1,0 +1,14 @@
+.data
+   msg: .asciiz "resultat :\n"
+   retour: .asciiz "\n"
+   a: .word 1
+   b: .word 16401
+   c: .word 16401
+.text
+main:
+
+
+
+    li $v0, 10
+    syscall
+ 

@@ -1,0 +1,6 @@
+int main(){
+	int a = 1000;
+
+	printf();
+	return 0;    /* Ceci est un commentaire*/
+}

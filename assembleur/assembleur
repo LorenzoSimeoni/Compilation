@@ -1,0 +1,35 @@
+.data #Commentaire
+  x:    .word     30
+  y:    .word     12
+  z:    .word      0
+  a: .word 4
+  msg: .asciiz    "resultat :\n"
+  retour: .asciiz    "\n"
+.text
+
+main:   lw $t0 ,x      # load word x dans le registre $t0
+        lw $t1 ,y
+        add $t2, $t0, $t1  # $t2 <- $t0+$t1
+        sw $t2, z          #store word $t2 à l'adresse de z
+        li $v0, 4
+        la $a0, msg      #affichage de msg
+        syscall
+        li $v0, 1 
+        lw $a0,z       #affichage de z
+        syscall 
+        li $v0, 4
+        la $a0, retour     #affichage de retour
+        syscall
+        
+.text
+
+main2:
+  lw $t0,a
+  li $v0, 4
+  la $a0, msg 
+  syscall
+  li $v0,1
+  lw $a0,a
+  syscall
+li $v0, 10         #fin
+        syscall

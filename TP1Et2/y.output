@@ -1,0 +1,90 @@
+   0  $accept : ensemble $end
+
+   1  ensemble : elem '\n'
+
+   2  elem : elem ',' elem
+   3       | '{' elem '}'
+   4       | ELEMENTS
+
+state 0
+	$accept : . ensemble $end  (0)
+
+	ELEMENTS  shift 1
+	'{'  shift 2
+	.  error
+
+	ensemble  goto 3
+	elem  goto 4
+
+
+state 1
+	elem : ELEMENTS .  (4)
+
+	.  reduce 4
+
+
+state 2
+	elem : '{' . elem '}'  (3)
+
+	ELEMENTS  shift 1
+	'{'  shift 2
+	.  error
+
+	elem  goto 5
+
+
+state 3
+	$accept : ensemble . $end  (0)
+
+	$end  accept
+
+
+state 4
+	ensemble : elem . '\n'  (1)
+	elem : elem . ',' elem  (2)
+
+	','  shift 6
+	'\n'  shift 7
+	.  error
+
+
+state 5
+	elem : elem . ',' elem  (2)
+	elem : '{' elem . '}'  (3)
+
+	','  shift 6
+	'}'  shift 8
+	.  error
+
+
+state 6
+	elem : elem ',' . elem  (2)
+
+	ELEMENTS  shift 1
+	'{'  shift 2
+	.  error
+
+	elem  goto 9
+
+
+state 7
+	ensemble : elem '\n' .  (1)
+
+	.  reduce 1
+
+
+state 8
+	elem : '{' elem '}' .  (3)
+
+	.  reduce 3
+
+
+state 9
+	elem : elem . ',' elem  (2)
+	elem : elem ',' elem .  (2)
+
+	.  reduce 2
+
+
+8 terminals, 3 nonterminals
+5 grammar rules, 10 states
